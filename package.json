@@ -1,0 +1,25 @@
+{
+  "name": "asketic-charts",
+  "version": "0.0.1",
+  "description": "Native charts for our projects",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AskeTIC/charts.git"
+  },
+  "keywords": [
+    "charts"
+  ],
+  "author": "@jonabasque",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/AskeTIC/charts/issues"
+  },
+  "homepage": "https://github.com/AskeTIC/charts#readme"
+}

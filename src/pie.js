@@ -3,6 +3,7 @@ function Pie(canvas, attr, ctx) {
   this.attr = {x:this.can.width/2, y:this.can.height/2, radius:attr.radius}; //x, y & radius
   this.ctx = this.can.getContext(ctx);
   this.circle = new Circle(attr.circle, this.can, ctx);
+  this.circle.makeCircle();
 }
 
 //var cmz=0,x=0,y=0,z=2;
@@ -15,7 +16,6 @@ function Pie(canvas, attr, ctx) {
 Pie.prototype.defined = function(line){
   this.can.lineWidth = line.width;
   this.can.strokeStyle = line.color;
-  this.circle.makeHole(this.can);
 }
 
 

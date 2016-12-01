@@ -1,4 +1,4 @@
-function Bars(canvas, ctx, width){
+export default function Bars(canvas, ctx, width){
     this.can = canvas;
     this.width = width;
     this.sep = width+width/2; //media

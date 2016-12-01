@@ -1,7 +1,5 @@
-console.log(Bars);
-console.log(Pie);
-console.log(Utils);
-console.log(Circle);
+import utils from 'asketic-utils';
+import {Pie, Bars} from '../index-es5';
 
 var entities = [
   {points:250,percent:null,color:"brown" },
@@ -18,7 +16,6 @@ var entities = [
 ];
 
 var total = 0;
-var utils = new Utils();
 
 utils.arraySort(entities);
 

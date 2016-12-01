@@ -1,5 +1,5 @@
 node_modules
+examples
 src/**/*.js
 test/**/*.js
-Gruntfile
 npm-debug.log

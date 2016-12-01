@@ -7,6 +7,9 @@
     "test": "test"
   },
   "scripts": {
+    "build-modules-harmony-umd": "babel src --out-dir lib --plugins=transform-es2015-modules-umd",
+    "build-modules-harmony-umd-index": "babel index.js --out-file index-es5.js --plugins=transform-es2015-modules-umd",
+    "build-modules-harmony-umd-examples": "babel examples --out-dir examples/lib --plugins=transform-es2015-modules-umd",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/AskeTIC/charts/issues"
   },
-  "homepage": "https://github.com/AskeTIC/charts#readme"
+  "homepage": "https://github.com/AskeTIC/charts#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.18.0"
+  },
+  "dependencies": {
+    "asketic-utils": "0.0.1"
+  }
 }

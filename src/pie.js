@@ -1,4 +1,7 @@
-function Pie(canvas, attr, ctx) {
+import utils from 'asketic-utils';
+import {default} from './circle';
+
+export default function Pie(canvas, attr, ctx) {
   this.can = canvas;
   this.attr = {x:this.can.width/2, y:this.can.height/2, radius:attr.radius}; //x, y & radius
   this.ctx = this.can.getContext(ctx);

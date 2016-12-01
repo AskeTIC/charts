@@ -1,4 +1,4 @@
-function Circle(attr, can, ctx) {
+export default function Circle(attr, can, ctx) {
   console.log(ctx);
   this.x = can.width/2; //x, y & radius
   this.y = can.height/2;

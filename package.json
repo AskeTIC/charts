@@ -1,12 +1,14 @@
 {
   "name": "asketic-charts",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "description": "Native charts for our projects",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "build-meteor": "babel src --out-dir lib --plugins=transform-es2015-modules-commonjs",
+    "build-meteor-index": "babel index-es6.js --out-file index.js --plugins=transform-es2015-modules-commonjs",
     "build-modules-harmony-umd": "babel src --out-dir lib --plugins=transform-es2015-modules-umd",
     "build-modules-harmony-umd-index": "babel index.js --out-file index-es5.js --plugins=transform-es2015-modules-umd",
     "build-modules-harmony-umd-examples": "babel examples --out-dir examples/lib --plugins=transform-es2015-modules-umd",
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/AskeTIC/charts#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
     "babel-plugin-transform-es2015-modules-umd": "^6.18.0"
   },
   "dependencies": {

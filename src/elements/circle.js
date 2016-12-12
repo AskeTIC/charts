@@ -1,4 +1,4 @@
-export default function Circle(attr, can, ctx) {
+var Circle = function(attr, can, ctx) {
   console.log(ctx);
   this.x = can.width/2; //x, y & radius
   this.y = can.height/2;
@@ -23,4 +23,4 @@ Circle.prototype.makeCircle = function(){
   this.ctx.closePath();
 }
 
-//(Circle)();
+module.exports = Circle;

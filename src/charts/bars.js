@@ -1,4 +1,4 @@
-export default function Bars(canvas, ctx, width){
+var Bars = function(canvas, ctx, width){
     this.can = canvas;
     this.width = width;
     this.sep = width+width/2; //media
@@ -15,4 +15,4 @@ Bars.prototype.makeBars = function (entities){
   }
 }
 
-//(Bars)();
+module.exports = Bars;

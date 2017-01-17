@@ -12,7 +12,7 @@ var Bars = function(canvas, options, entities){
         this._setCanvasWidth(entities.length);
         /*No hace falta establecer el ancho de barras y espacios por que el ancho de canvas es ha medida y
         con el setBars() quedará bien repartido.*/
-    //si es 0 ocupará el 100%
+    //si es 1 ocupará el 100%
     }else if(this.can.width === 1){
         console.log("setCanvasWidth100%");
         this.can.style.width = "100%";
@@ -25,20 +25,33 @@ var Bars = function(canvas, options, entities){
         //Se necesita reestablecer el ancho de las barras pasado en options, el divisor será con el que jugar.
         this._setBarWidth(entities.length);
     }
+    //ESTABLECER ALTO DE CANVAS
+    //si es 1 ocupará el 100%
+    if(this.can.height === 1){
+        this.can.style.height = "100%";
+        this.can.height = this.can.offsetHeight;
+        console.log(this.can.height);
+    //si es otra cosa de 0 o 1 ocupará lo que se ha indicado.
+    }
     this.ctx = this.can.getContext(options.ctx);
     this.setBars(entities);
 }
-  //var wd=20; var sp=wd+wd/2; var plc=0;
+//Se crean las barras dandole a la primera el alto totar y la siguientes un porcentaje acorde a los puntos que tiene cada entity
 Bars.prototype.setBars = function (entities){
-  var ent = entities || this.entities;
-  var x = this.sep;
-  for (i = 0; i < ent.length; i++) {
-    this.ctx.fillStyle = ent[i].color;
-    console.log(this.width);
-    this.ctx.fillRect(x, 0, this.width, ent[i].points);
-    x += this.sep + this.width;
-    console.log(x);
-  }
+    var ent = entities || this.entities;
+    var x = this.sep;
+    var lastHeight = this.can.height; //100%
+    var firstBarPoints = ent[0].points;
+    for (i = 0; i < ent.length; i++) {
+        if(i > 0){
+            lastHeight = (ent[i].points * this.can.height / firstBarPoints);
+            console.log(lastHeight);
+        }
+        this.ctx.fillStyle = ent[i].color;
+        console.log(this.width);
+        this.ctx.fillRect(x, this.can.height, this.width, -lastHeight);
+        x += this.sep + this.width;
+    }
 }
 
 //si nos pasan -1 en width de canvas ocupará todo lo que necesiten las medidas de barras y espacios.

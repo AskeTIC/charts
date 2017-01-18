@@ -1,41 +1,53 @@
 var Bars = function(canvas, options, entities){
-    console.log(options);
     this.can = canvas;
     this.entities = entities;
-    this.width = options.width; //ancho de bar
-    this.sep = options.width / options.div ; //separacion entre barras
-    console.log(this.sep);
-    //ESTABLECER ANCHO DE CANVAS
+    this.width = options.bar.width; //ancho de bar
+    this.sep = options.bar.width / options.bar.div ; //separacion entre barras
+    this.setCanvasWidth(options.canvas.width);
+    this.setCanvasHeight(options.canvas.height);
+    this.ctx = this.can.getContext(options.canvas.ctx);
+    this.setBars(entities);
+}
+
+//establecer ancho de canvas
+Bars.prototype.setCanvasWidth = function(width){
     //si es 0, ocupará lo que necesiten las barras y espacios.
-    if(this.can.width === 0){ //ancho de canvas
+    if(width === 0){ //ancho de canvas
         console.log("setCanvasWidthNecesario");
-        this._setCanvasWidth(entities.length);
+        var totalSpaces = this.entities.length + 2 ;
+        var widthBars = this.entities.length * this.width;
+        var widthSpaces = totalSpaces * this.sep;
+        this.can.width = widthSpaces + widthBars;
         /*No hace falta establecer el ancho de barras y espacios por que el ancho de canvas es ha medida y
         con el setBars() quedará bien repartido.*/
     //si es 1 ocupará el 100%
-    }else if(this.can.width === 1){
+    }else if(width === 1){
         console.log("setCanvasWidth100%");
         this.can.style.width = "100%";
         this.can.width = this.can.offsetWidth;
         //Se necesita reestablecer el ancho de las barras pasado en options, el divisor será con el que jugar.
-        this._setBarWidth(entities.length);
+        this._setBarWidth(this.entities.length);
     //Si es otro valor así se quedará.
     }else{
         console.log("setBarWidth");
         //Se necesita reestablecer el ancho de las barras pasado en options, el divisor será con el que jugar.
-        this._setBarWidth(entities.length);
+        this._setBarWidth(this.entities.length);
     }
-    //ESTABLECER ALTO DE CANVAS
+}
+
+//establecer alto de canvas
+Bars.prototype.setCanvasHeight = function(height){
     //si es 1 ocupará el 100%
-    if(this.can.height === 1){
+    if(height === 1){
         this.can.style.height = "100%";
         this.can.height = this.can.offsetHeight;
         console.log(this.can.height);
     //si es otra cosa de 0 o 1 ocupará lo que se ha indicado.
+    }else{
+        this.can.height = height;
     }
-    this.ctx = this.can.getContext(options.ctx);
-    this.setBars(entities);
 }
+
 //Se crean las barras dandole a la primera el alto totar y la siguientes un porcentaje acorde a los puntos que tiene cada entity
 Bars.prototype.setBars = function (entities){
     var ent = entities || this.entities;
@@ -53,16 +65,6 @@ Bars.prototype.setBars = function (entities){
         x += this.sep + this.width;
     }
 }
-
-//si nos pasan -1 en width de canvas ocupará todo lo que necesiten las medidas de barras y espacios.
-Bars.prototype._setCanvasWidth = function(count){
-  var totalSpaces = count + 2 ;
-  var widthBars = count * this.width;
-  var widthSpaces = totalSpaces * this.sep;
-  this.can.width = widthSpaces + widthBars;
-}
-
-//si nos pasan -1 las barras y espacios se ajustarán al 100%
 
 //si nos pasan el ancho en lugar de 0, las barras y espacios se ajustarán a este.
 Bars.prototype._setBarWidth = function(count){
